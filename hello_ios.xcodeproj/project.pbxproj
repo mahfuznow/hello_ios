@@ -12,6 +12,10 @@
 		BBFC9DAB2BF9DE47005C1BFF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBFC9DAA2BF9DE47005C1BFF /* Preview Assets.xcassets */; };
 		BBFC9DB32BF9E01D005C1BFF /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFC9DB22BF9E01D005C1BFF /* HomeScreen.swift */; };
 		BBFC9DB62BF9E515005C1BFF /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFC9DB52BF9E515005C1BFF /* HomeViewModel.swift */; };
+		BBFC9DBB2BF9FAE7005C1BFF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFC9DBA2BF9FAE7005C1BFF /* LoginViewModel.swift */; };
+		BBFC9DBD2BF9FC07005C1BFF /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFC9DBC2BF9FC07005C1BFF /* LoginScreen.swift */; };
+		BBFC9DBF2BFA1396005C1BFF /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFC9DBE2BFA1396005C1BFF /* EmailValidator.swift */; };
+		BBFC9DC12BFA13CC005C1BFF /* PasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFC9DC02BFA13CC005C1BFF /* PasswordValidator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +25,10 @@
 		BBFC9DAA2BF9DE47005C1BFF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BBFC9DB22BF9E01D005C1BFF /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		BBFC9DB52BF9E515005C1BFF /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		BBFC9DBA2BF9FAE7005C1BFF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		BBFC9DBC2BF9FC07005C1BFF /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		BBFC9DBE2BFA1396005C1BFF /* EmailValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidator.swift; sourceTree = "<group>"; };
+		BBFC9DC02BFA13CC005C1BFF /* PasswordValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +80,7 @@
 		BBFC9DB12BF9DFF8005C1BFF /* feature */ = {
 			isa = PBXGroup;
 			children = (
+				BBFC9DB92BF9FAC9005C1BFF /* login */,
 				BBFC9DB42BF9E4F9005C1BFF /* home */,
 			);
 			path = feature;
@@ -84,6 +93,17 @@
 				BBFC9DB52BF9E515005C1BFF /* HomeViewModel.swift */,
 			);
 			path = home;
+			sourceTree = "<group>";
+		};
+		BBFC9DB92BF9FAC9005C1BFF /* login */ = {
+			isa = PBXGroup;
+			children = (
+				BBFC9DBA2BF9FAE7005C1BFF /* LoginViewModel.swift */,
+				BBFC9DBC2BF9FC07005C1BFF /* LoginScreen.swift */,
+				BBFC9DBE2BFA1396005C1BFF /* EmailValidator.swift */,
+				BBFC9DC02BFA13CC005C1BFF /* PasswordValidator.swift */,
+			);
+			path = login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,9 +176,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBFC9DC12BFA13CC005C1BFF /* PasswordValidator.swift in Sources */,
+				BBFC9DBB2BF9FAE7005C1BFF /* LoginViewModel.swift in Sources */,
 				BBFC9DA42BF9DE46005C1BFF /* MainApp.swift in Sources */,
 				BBFC9DB32BF9E01D005C1BFF /* HomeScreen.swift in Sources */,
 				BBFC9DB62BF9E515005C1BFF /* HomeViewModel.swift in Sources */,
+				BBFC9DBD2BF9FC07005C1BFF /* LoginScreen.swift in Sources */,
+				BBFC9DBF2BFA1396005C1BFF /* EmailValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
