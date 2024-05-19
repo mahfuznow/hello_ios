@@ -12,6 +12,8 @@ class LoginViewModel : ObservableObject {
     @Published private(set) var emailError: String?
     @Published private(set) var passwordError: String?
     
+    @Published var shouldNavigateToHome: Bool = false
+    
     func onEmailChange(email: String) {
         print("Email changed to \(email)")
         self.email = email.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -30,7 +32,7 @@ class LoginViewModel : ObservableObject {
         
         if emailError == nil && passwordError == nil {
             print("Login success")
-            //TODO: Navigate to home screen
+            shouldNavigateToHome = true
         } else {
             print("Login failed")
         }

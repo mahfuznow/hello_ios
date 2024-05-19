@@ -15,17 +15,36 @@ struct LoginScreen: View {
         NavigationView {
             VStack {
                 _getLoginView()
+                _getHomeNavigation()
             }.padding(32)
-            .navigationTitle("Login")
+                .navigationTitle("Login")
         }
     }
     
     private func _getLoginView() -> some View {
         VStack {
+            _logoView()
             _getEmailView()
             _getPasswordView()
             _getLoginButtonView()
         }
+    }
+    
+    private func _getHomeNavigation() -> some View {
+        NavigationLink(
+            destination: HomeScreen(),
+            isActive: $viewModel.shouldNavigateToHome,
+            label: {
+                EmptyView()
+            })
+    }
+    
+    private func _logoView() -> some View {
+        Image(systemName: "person")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 100, height: 100)
+            .padding(.bottom, 32)
     }
     
     
