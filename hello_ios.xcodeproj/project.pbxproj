@@ -7,18 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BBFC9DA42BF9DE46005C1BFF /* hello_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFC9DA32BF9DE46005C1BFF /* hello_iosApp.swift */; };
-		BBFC9DA62BF9DE46005C1BFF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFC9DA52BF9DE46005C1BFF /* ContentView.swift */; };
+		BBFC9DA42BF9DE46005C1BFF /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFC9DA32BF9DE46005C1BFF /* MainApp.swift */; };
 		BBFC9DA82BF9DE47005C1BFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBFC9DA72BF9DE47005C1BFF /* Assets.xcassets */; };
 		BBFC9DAB2BF9DE47005C1BFF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBFC9DAA2BF9DE47005C1BFF /* Preview Assets.xcassets */; };
+		BBFC9DB32BF9E01D005C1BFF /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFC9DB22BF9E01D005C1BFF /* HomeScreen.swift */; };
+		BBFC9DB62BF9E515005C1BFF /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFC9DB52BF9E515005C1BFF /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BBFC9DA02BF9DE46005C1BFF /* hello_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hello_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BBFC9DA32BF9DE46005C1BFF /* hello_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hello_iosApp.swift; sourceTree = "<group>"; };
-		BBFC9DA52BF9DE46005C1BFF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BBFC9DA32BF9DE46005C1BFF /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
 		BBFC9DA72BF9DE47005C1BFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BBFC9DAA2BF9DE47005C1BFF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BBFC9DB22BF9E01D005C1BFF /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		BBFC9DB52BF9E515005C1BFF /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +53,8 @@
 		BBFC9DA22BF9DE46005C1BFF /* hello_ios */ = {
 			isa = PBXGroup;
 			children = (
-				BBFC9DA32BF9DE46005C1BFF /* hello_iosApp.swift */,
-				BBFC9DA52BF9DE46005C1BFF /* ContentView.swift */,
+				BBFC9DB12BF9DFF8005C1BFF /* feature */,
+				BBFC9DA32BF9DE46005C1BFF /* MainApp.swift */,
 				BBFC9DA72BF9DE47005C1BFF /* Assets.xcassets */,
 				BBFC9DA92BF9DE47005C1BFF /* Preview Content */,
 			);
@@ -65,6 +67,23 @@
 				BBFC9DAA2BF9DE47005C1BFF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BBFC9DB12BF9DFF8005C1BFF /* feature */ = {
+			isa = PBXGroup;
+			children = (
+				BBFC9DB42BF9E4F9005C1BFF /* home */,
+			);
+			path = feature;
+			sourceTree = "<group>";
+		};
+		BBFC9DB42BF9E4F9005C1BFF /* home */ = {
+			isa = PBXGroup;
+			children = (
+				BBFC9DB22BF9E01D005C1BFF /* HomeScreen.swift */,
+				BBFC9DB52BF9E515005C1BFF /* HomeViewModel.swift */,
+			);
+			path = home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +156,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBFC9DA62BF9DE46005C1BFF /* ContentView.swift in Sources */,
-				BBFC9DA42BF9DE46005C1BFF /* hello_iosApp.swift in Sources */,
+				BBFC9DA42BF9DE46005C1BFF /* MainApp.swift in Sources */,
+				BBFC9DB32BF9E01D005C1BFF /* HomeScreen.swift in Sources */,
+				BBFC9DB62BF9E515005C1BFF /* HomeViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
