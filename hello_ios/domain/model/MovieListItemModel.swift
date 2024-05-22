@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MovieListItemModel {
+class MovieListItemModel: Identifiable {
     var id: Int
     var title: String
     var poster: String

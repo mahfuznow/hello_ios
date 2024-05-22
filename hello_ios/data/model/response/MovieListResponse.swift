@@ -39,8 +39,8 @@ struct MovieListResponse: Codable {
         let largeCoverImage: String
         let state: Stat
         let torrents: [Torrent]
-        let dateUploaded: String
-        let dateUploadedUnix: Int
+        let dateUploaded: String?
+        let dateUploadedUnix: Int?
         
         enum CodingKeys: String, CodingKey {
             case id, url
@@ -67,6 +67,7 @@ struct MovieListResponse: Codable {
         enum MpaRating: String, Codable {
             case empty = ""
             case pg = "PG"
+            case r = "R"
         }
         
         enum Stat: String, Codable {
@@ -104,6 +105,7 @@ struct MovieListResponse: Codable {
             enum Quality: String, Codable {
                 case the1080P = "1080p"
                 case the720P = "720p"
+                case the480P = "480p"
             }
             
             enum TypeEnum: String, Codable {

@@ -11,7 +11,7 @@ import Foundation
 class MovieViewModel {
     var movieList: [MovieListItemModel] = []
     
-    //let movieRepository: MovieRepository = DummyMovieRepositoy()
+//    let movieRepository: MovieRepository = DummyMovieRepositoy()
     let movieRepository: MovieRepository = MovieRepositoryImpl()
     
     init() {
