@@ -20,7 +20,8 @@ struct MovieDetailsResponse: Codable {
         let url: String
         let imdbCode, title, titleEnglish, titleLong: String
         let slug: String
-        let year, rating, runtime: Int
+        let year, runtime: Int
+        let rating: Double
         let genres: [String]
         let likeCount: Int
         let descriptionIntro, descriptionFull, ytTrailerCode, language: String

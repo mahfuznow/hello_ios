@@ -8,41 +8,43 @@
 import Foundation
 
 enum MovieGenre {
-    case action, adventure, comedy, drama, horror, scifi
+    case action, adventure, comedy, drama, horror, scifi, unknown
     
     static func fromString(_ genre: String) -> MovieGenre {
         switch genre {
-        case "action":
+        case "Action":
             return .action
-        case "adventure":
+        case "Adventure":
             return .adventure
-        case "comedy":
+        case "Comedy":
             return .comedy
-        case "drama":
+        case "Drama":
             return .drama
-        case "horror":
+        case "Horror":
             return .horror
-        case "scifi":
+        case "Sci-Fi":
             return .scifi
         default:
-            return .action
+            return .unknown
         }
     }
     
     func toString() -> String {
         switch self {
         case .action:
-            return "action"
+            return "Action"
         case .adventure:
-            return "adventure"
+            return "Adventure"
         case .comedy:
-            return "comedy"
+            return "Comedy"
         case .drama:
-            return "drama"
+            return "Drama"
         case .horror:
-            return "horror"
+            return "Horror"
         case .scifi:
-            return "scifi"
+            return "Sci-Fi"
+        case .unknown:
+            return "Unknown"
         }
     }
 }

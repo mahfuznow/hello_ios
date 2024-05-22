@@ -12,7 +12,7 @@ struct MovieDetailsModel {
     let description: String
     let largeCoverImage: String
     let releaseYear: Int
-    let rating: Int
+    let rating: Double
     let duration: Int
     let genres: [MovieGenre]
     
