@@ -8,33 +8,28 @@
 import SwiftUI
 
 struct HomeScreen: View {
-    @StateObject private var viewModel = HomeViewModel()
+    @State private var viewModel = HomeViewModel()
     
     var body: some View {
-        VStack {
-            Spacer()
-            Text("Count: \(viewModel.count)")
-                .font(.title2)
-                .padding()
-            Spacer()
-            Button(action: {
-                viewModel.incrementCount()
-            }) {
-                Text("+")
-                    .foregroundColor(.white)
-                    .font(.largeTitle)
-                    .padding(.all, 24)
-                    .background(Color.blue)
-                    .clipShape(Circle())
-            }
-            .padding()
+        TabView {
+            MovieListScreen()
+                .tabItem {
+                    Label("Movies", systemImage: "film")
+                }
+            MovieSearchScreen()
+                .tabItem {
+                    Label("Search", systemImage: "magnifyingglass")
+                }
+            Text("Watchlist")
+                .tabItem {
+                    Label("Watchlist", systemImage: "bookmark")
+                }
+            Text("Settings")
+                .tabItem {
+                    Label("Settings", systemImage: "gear")
+                }
         }
     }
 }
 
 
-struct HomeScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeScreen()
-    }
-}

@@ -40,6 +40,11 @@ class DiModule {
                 type: MovieDetailsViewModel.self,
                 instance: MovieDetailsViewModel(movieRepository: try DiContainer.shared.resolve(type: MovieRepository.self))
             )
+            
+            try DiContainer.shared.registerSingleton(
+                type: MovieSearchViewModel.self,
+                instance: MovieSearchViewModel(movieRepository: try DiContainer.shared.resolve(type: MovieRepository.self))
+            )
         } catch {
             print("Failed to register view models: \(error)")
         }

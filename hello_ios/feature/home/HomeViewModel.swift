@@ -7,10 +7,7 @@
 
 import Foundation
 
-class HomeViewModel : ObservableObject {
-    @Published private(set) var count: Int = 0
-
-    func incrementCount() {
-        count += 1
-    }
+@Observable
+class HomeViewModel {
+    
 }
