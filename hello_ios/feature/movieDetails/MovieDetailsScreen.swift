@@ -11,7 +11,11 @@ import SwiftUI
 struct MovieDetailsScreen: View {
     let movieId: Int
     
-    @State private var viewmodel = MovieDetailsViewModel()
+    @State private var viewmodel: MovieDetailsViewModel = try! DiContainer.shared.resolve(type: MovieDetailsViewModel.self)
+    
+    init(movieId: Int) {
+        self.movieId = movieId
+    }
     
     var body: some View {
         if let movie = viewmodel.movieDetails {

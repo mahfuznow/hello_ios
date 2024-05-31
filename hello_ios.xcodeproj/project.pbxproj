@@ -21,6 +21,8 @@
 		BBB0B81F2BFE9351001216D0 /* MovieSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0B81E2BFE9351001216D0 /* MovieSlider.swift */; };
 		BBB0B8222BFE9AE8001216D0 /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0B8212BFE9AE8001216D0 /* MovieDetailsViewModel.swift */; };
 		BBB0B8242BFE9C0E001216D0 /* MovieDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0B8232BFE9C0E001216D0 /* MovieDetailsScreen.swift */; };
+		BBB0B8332C03D338001216D0 /* DiModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0B8322C03D338001216D0 /* DiModule.swift */; };
+		BBE52C502C0A3A52003D8029 /* DiContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE52C4F2C0A3A52003D8029 /* DiContainer.swift */; };
 		BBFC9DA42BF9DE46005C1BFF /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFC9DA32BF9DE46005C1BFF /* MainApp.swift */; };
 		BBFC9DA82BF9DE47005C1BFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBFC9DA72BF9DE47005C1BFF /* Assets.xcassets */; };
 		BBFC9DAB2BF9DE47005C1BFF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBFC9DAA2BF9DE47005C1BFF /* Preview Assets.xcassets */; };
@@ -47,6 +49,8 @@
 		BBB0B81E2BFE9351001216D0 /* MovieSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSlider.swift; sourceTree = "<group>"; };
 		BBB0B8212BFE9AE8001216D0 /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModel.swift; sourceTree = "<group>"; };
 		BBB0B8232BFE9C0E001216D0 /* MovieDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsScreen.swift; sourceTree = "<group>"; };
+		BBB0B8322C03D338001216D0 /* DiModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiModule.swift; sourceTree = "<group>"; };
+		BBE52C4F2C0A3A52003D8029 /* DiContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiContainer.swift; sourceTree = "<group>"; };
 		BBFC9DA02BF9DE46005C1BFF /* hello_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hello_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBFC9DA32BF9DE46005C1BFF /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
 		BBFC9DA72BF9DE47005C1BFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -152,6 +156,15 @@
 			path = movieDetails;
 			sourceTree = "<group>";
 		};
+		BBB0B8292C03CF09001216D0 /* di */ = {
+			isa = PBXGroup;
+			children = (
+				BBB0B8322C03D338001216D0 /* DiModule.swift */,
+				BBE52C4F2C0A3A52003D8029 /* DiContainer.swift */,
+			);
+			path = di;
+			sourceTree = "<group>";
+		};
 		BBFC9D972BF9DE46005C1BFF = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +184,7 @@
 		BBFC9DA22BF9DE46005C1BFF /* hello_ios */ = {
 			isa = PBXGroup;
 			children = (
+				BBB0B8292C03CF09001216D0 /* di */,
 				BBB0B80E2BFE6A33001216D0 /* domain */,
 				BBB0B8022BFE5DBF001216D0 /* data */,
 				BBFC9DB12BF9DFF8005C1BFF /* feature */,
@@ -295,10 +309,12 @@
 				BBFC9DBB2BF9FAE7005C1BFF /* LoginViewModel.swift in Sources */,
 				BBB0B8052BFE5DD1001216D0 /* MovieListResponse.swift in Sources */,
 				BBB0B81B2BFE7516001216D0 /* MovieRepositoryImpl.swift in Sources */,
+				BBE52C502C0A3A52003D8029 /* DiContainer.swift in Sources */,
 				BBB0B8082BFE5E85001216D0 /* DummyMovieRepositoy.swift in Sources */,
 				BBB0B8192BFE6F94001216D0 /* MovieRepository.swift in Sources */,
 				BBB0B81D2BFE7CA0001216D0 /* MovieListViewModel.swift in Sources */,
 				BBFC9DA42BF9DE46005C1BFF /* MainApp.swift in Sources */,
+				BBB0B8332C03D338001216D0 /* DiModule.swift in Sources */,
 				BBB0B8142BFE6B93001216D0 /* MovieDetailsModel.swift in Sources */,
 				BBB0B80B2BFE65AE001216D0 /* MovieDetailsResponse.swift in Sources */,
 				BBB0B8242BFE9C0E001216D0 /* MovieDetailsScreen.swift in Sources */,

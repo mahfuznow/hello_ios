@@ -10,7 +10,12 @@ import Foundation
 @Observable
 class MovieDetailsViewModel {
     var movieDetails: MovieDetailsModel? = nil
-    var movieRepository: MovieRepository = MovieRepositoryImpl()
+    
+    var movieRepository: MovieRepository
+    
+    init(movieRepository: MovieRepository) {
+        self.movieRepository = movieRepository
+    }
     
     func getMovieDetails(movieId: Int) {
         Task {

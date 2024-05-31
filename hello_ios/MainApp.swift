@@ -9,6 +9,11 @@ import SwiftUI
 
 @main
 struct MainApp: App {
+    
+    init() {
+        DiModule.shared.injectDependencies()
+    }
+    
     var body: some Scene {
         WindowGroup {
             MovieListScreen()

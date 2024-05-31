@@ -8,15 +8,16 @@
 import Foundation
 
 @Observable
-class MovieListViewModel {
+class MovieListViewModel: ObservableObject {
     var movieList: [MovieListItemModel] = []
     var isMovieDetailsPresented: Bool = false
     var selectedMovieId: Int = 0
     
-//    let movieRepository: MovieRepository = DummyMovieRepositoy()
-    let movieRepository: MovieRepository = MovieRepositoryImpl()
+
+    private var movieRepository: MovieRepository
     
-    init() {
+    init(movieRepository: MovieRepository) {
+        self.movieRepository = movieRepository
         fetchMovieList()
     }
     

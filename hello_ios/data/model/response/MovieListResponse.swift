@@ -115,6 +115,7 @@ struct MovieListResponse: Codable {
             
             enum VideoCodec: String, Codable {
                 case x264 = "x264"
+                case x265 = "x265"
             }
             
         }
