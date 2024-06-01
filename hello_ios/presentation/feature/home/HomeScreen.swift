@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeScreen: View {
-    @State private var viewModel = HomeViewModel()
+    @State private var viewModel = try! DiContainer.shared.resolve(type: HomeViewModel.self)
     
     var body: some View {
         TabView {

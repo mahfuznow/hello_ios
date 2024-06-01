@@ -14,8 +14,20 @@ class DiModule {
     private init() {}
     
     func injectDependencies() {
+        injectNavigation()
         injectRepositories()
         injectViewModels()
+    }
+    
+    private func injectNavigation() {
+        do {
+            try DiContainer.shared.registerSingleton(
+                type: NavigationViewModel.self,
+                instance: NavigationViewModel()
+            )
+        } catch {
+            print("Failed to register navigation: \(error)")
+        }
     }
     
     private func injectRepositories() {
@@ -32,8 +44,15 @@ class DiModule {
     private func injectViewModels() {
         do {
             try DiContainer.shared.registerSingleton(
+                type: HomeViewModel.self,
+                instance: HomeViewModel()
+            )
+            try DiContainer.shared.registerSingleton(
                 type: MovieListViewModel.self,
-                instance: MovieListViewModel(movieRepository: try DiContainer.shared.resolve(type: MovieRepository.self))
+                instance: MovieListViewModel(
+                    movieRepository: try DiContainer.shared.resolve(type: MovieRepository.self),
+                    navigationViewModel: try DiContainer.shared.resolve(type: NavigationViewModel.self)
+                )
             )
             
             try DiContainer.shared.registerSingleton(

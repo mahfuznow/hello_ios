@@ -12,33 +12,24 @@ struct MovieListScreen: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                NavigationLink(
-                    destination: MovieDetailsScreen(movieId: viewModel.selectedMovieId),
-                    isActive: $viewModel.isMovieDetailsPresented,
-                    label: {
-                        EmptyView()
-                    })
-                
-                ScrollView(.vertical, showsIndicators: false) {
-                    VStack(alignment: .leading) {
-                        if viewModel.movieList.isEmpty {
-                            ProgressView()
-                                .padding()
-                        } else {
-                            MovieSlider(
-                                movieList: Array(viewModel.movieList.prefix(10)),
-                                onClickedMovieItem: {
-                                    viewModel.onClickedMovieItem(movieId: $0.id)
-                                }
-                            )
-                            .padding(.bottom)
-                            MovieCategoryView(title: "Newly Released", movies: viewModel.movieList, onMovieClick: viewModel.onClickedMovieItem)
-                            MovieCategoryView(title: "Most Popular Movies", movies: viewModel.movieList, onMovieClick: viewModel.onClickedMovieItem)
-                        }
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(alignment: .leading) {
+                    if viewModel.movieList.isEmpty {
+                        ProgressView()
+                            .padding()
+                    } else {
+                        MovieSlider(
+                            movieList: Array(viewModel.movieList.prefix(10)),
+                            onClickedMovieItem: {
+                                viewModel.onClickedMovieItem(movieId: $0.id)
+                            }
+                        )
+                        .padding(.bottom)
+                        MovieCategoryView(title: "Newly Released", movies: viewModel.movieList, onMovieClick: viewModel.onClickedMovieItem)
+                        MovieCategoryView(title: "Most Popular Movies", movies: viewModel.movieList, onMovieClick: viewModel.onClickedMovieItem)
                     }
-                    .padding(.horizontal)
                 }
+                .padding(.horizontal)
             }
             .navigationTitle("Movies")
         }

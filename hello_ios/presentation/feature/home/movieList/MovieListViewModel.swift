@@ -8,16 +8,15 @@
 import Foundation
 
 @Observable
-class MovieListViewModel: ObservableObject {
+class MovieListViewModel {
     var movieList: [MovieListItemModel] = []
-    var isMovieDetailsPresented: Bool = false
-    var selectedMovieId: Int = 0
-    
 
     private var movieRepository: MovieRepository
+    private var navigationViewModel: NavigationViewModel
     
-    init(movieRepository: MovieRepository) {
+    init(movieRepository: MovieRepository, navigationViewModel: NavigationViewModel) {
         self.movieRepository = movieRepository
+        self.navigationViewModel = navigationViewModel
         fetchMovieList()
     }
     
@@ -34,7 +33,6 @@ class MovieListViewModel: ObservableObject {
     
     func onClickedMovieItem(movieId: Int) {
         print("Movie clicked: \(movieId)")
-        selectedMovieId = movieId
-        isMovieDetailsPresented = true
+        navigationViewModel.navigateTo(screen: .movieDetails(id: movieId))
     }
 }
