@@ -5,79 +5,61 @@
 //  Created by BS1002 on 22/5/24.
 //
 
-import Foundation
 import SwiftUI
 
-struct MovieListScreen : View {
+struct MovieListScreen: View {
     @State var viewModel: MovieListViewModel = try! DiContainer.shared.resolve(type: MovieListViewModel.self)
     
     var body: some View {
         NavigationView {
             VStack {
-                _getDetailsNavigation()
+                NavigationLink(
+                    destination: MovieDetailsScreen(movieId: viewModel.selectedMovieId),
+                    isActive: $viewModel.isMovieDetailsPresented,
+                    label: {
+                        EmptyView()
+                    })
+                
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(alignment: .leading) {
-                        if(viewModel.movieList.isEmpty) {
+                        if viewModel.movieList.isEmpty {
                             ProgressView()
-                        }
-                        else {
-                            MovieSlider(movieList: Array(viewModel.movieList[1...10]))
-                            _newlyReleased()
-                            _mostPopularMovies()
+                                .padding()
+                        } else {
+                            MovieSlider(movieList: Array(viewModel.movieList.prefix(10)))
+                                .padding(.bottom)
+                            MovieCategoryView(title: "Newly Released", movies: viewModel.movieList, onMovieClick: viewModel.onClickedMovieItem)
+                            MovieCategoryView(title: "Most Popular Movies", movies: viewModel.movieList, onMovieClick: viewModel.onClickedMovieItem)
                         }
                     }
+                    .padding(.horizontal)
                 }
-            }.navigationTitle("Movies")
+            }
+            .navigationTitle("Movies")
         }
     }
+}
+
+struct MovieCategoryView: View {
+    let title: String
+    let movies: [MovieListItemModel]
+    let onMovieClick: (Int) -> Void
     
-    private func _getDetailsNavigation() -> some View {
-        NavigationLink(
-            destination: MovieDetailsScreen(movieId: viewModel.selectedMovieId),
-            isActive: self.$viewModel.isMovieDetailsPresented,
-            label: {
-                EmptyView()
-            })
-    }
-    
-    private func _newlyReleased() -> some View {
-        VStack {
-            Text("Newly Released").font(.title2)
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(title)
+                .font(.title2)
+                .padding(.bottom, 5)
+            
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 15) {
-                    ForEach(viewModel.movieList) { movie in
-                        MovieCard(
-                            movie: movie,
-                            onCardClicked: {
-                                viewModel.onClickedMovieItem(movieId: movie.id)
-                            }
-                        )
+                    ForEach(movies) { movie in
+                        MovieCard(movie: movie, onCardClicked: { onMovieClick(movie.id) })
                     }
                 }
-                .padding(.leading, 10)
-                .padding(.trailing, 10)
             }
         }
-    }
-    
-    private func _mostPopularMovies() -> some View {
-        VStack {
-            Text("Most Popular Movies").font(.title2)
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 15) {
-                    ForEach(viewModel.movieList) { movie in
-                        MovieCard(
-                            movie: movie,
-                            onCardClicked: {
-                                viewModel.onClickedMovieItem(movieId: movie.id)
-                            }
-                        )
-                    }
-                }
-                .padding(.leading, 10)
-                .padding(.trailing, 10)
-            }
-        }
+        .padding(.bottom)
     }
 }
 
@@ -87,7 +69,6 @@ struct MovieCard: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            
             AsyncImage(url: URL(string: movie.poster)) { image in
                 image
                     .resizable()
@@ -110,8 +91,7 @@ struct MovieCard: View {
                 .foregroundColor(.gray)
         }
         .frame(width: 100)
-        .padding(.leading, 10)
-        .padding(.trailing, 10)
+        .padding(.horizontal, 10)
         .onTapGesture {
             onCardClicked()
         }
