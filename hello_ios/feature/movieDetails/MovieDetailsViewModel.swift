@@ -27,4 +27,8 @@ class MovieDetailsViewModel {
             }
         }
     }
+    
+    func clearMovieDetails() {
+        movieDetails = nil
+    }
 }
