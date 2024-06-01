@@ -8,7 +8,7 @@
 import Foundation
 
 enum MovieGenre {
-    case action, adventure, comedy, drama, horror, scifi, unknown
+    case action, adventure, comedy, drama, horror, scifi, animation, crime, fantasy, mystery, romance, thriller, western, unknown;
     
     static func fromString(_ genre: String) -> MovieGenre {
         switch genre {
@@ -24,6 +24,20 @@ enum MovieGenre {
             return .horror
         case "Sci-Fi":
             return .scifi
+        case "Animation":
+            return .animation
+        case "Crime":
+            return .crime
+        case "Fantasy":
+            return .fantasy
+        case "Mystery":
+            return .mystery
+        case "Romance":
+            return .romance
+        case "Thriller":
+            return .thriller
+        case "Western":
+            return .western
         default:
             return .unknown
         }
@@ -43,7 +57,21 @@ enum MovieGenre {
             return "Horror"
         case .scifi:
             return "Sci-Fi"
-        case .unknown:
+        case .animation:
+            return "Animation"
+        case .crime:
+            return "Crime"
+        case .fantasy:
+            return "Fantasy"
+        case .mystery:
+            return "Mystery"
+        case .romance:
+            return "Romance"
+        case .thriller:
+            return "Thriller"
+        case .western:
+            return "Western"
+        default:
             return "Unknown"
         }
     }
