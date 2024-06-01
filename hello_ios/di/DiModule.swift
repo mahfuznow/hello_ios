@@ -20,54 +20,67 @@ class DiModule {
     }
     
     private func injectNavigation() {
-        do {
-            try DiContainer.shared.registerSingleton(
-                type: NavigationViewModel.self,
-                instance: NavigationViewModel()
-            )
-        } catch {
-            print("Failed to register navigation: \(error)")
-        }
+        registerSingleton(NavigationViewModel.self, instance: NavigationViewModel())
     }
     
     private func injectRepositories() {
-        do {
-            try DiContainer.shared.registerSingleton(
-                type: MovieRepository.self,
-                instance: MovieRepositoryImpl()
-            )
-        } catch {
-            print("Failed to register repositories: \(error)")
-        }
+        registerSingleton(MovieRepository.self, instance: MovieRepositoryImpl())
     }
     
     private func injectViewModels() {
-        do {
-            try DiContainer.shared.registerSingleton(
-                type: HomeViewModel.self,
-                instance: HomeViewModel()
-            )
-            try DiContainer.shared.registerSingleton(
-                type: MovieListViewModel.self,
-                instance: MovieListViewModel(
-                    movieRepository: try DiContainer.shared.resolve(type: MovieRepository.self),
-                    navigationViewModel: try DiContainer.shared.resolve(type: NavigationViewModel.self)
-                )
-            )
-            
-            try DiContainer.shared.registerSingleton(
-                type: MovieDetailsViewModel.self,
-                instance: MovieDetailsViewModel(movieRepository: try DiContainer.shared.resolve(type: MovieRepository.self))
-            )
-            
-            try DiContainer.shared.registerSingleton(
-                type: MovieSearchViewModel.self,
-                instance: MovieSearchViewModel(movieRepository: try DiContainer.shared.resolve(type: MovieRepository.self))
-            )
-        } catch {
-            print("Failed to register view models: \(error)")
+        guard let movieRepository: MovieRepository = resolve(MovieRepository.self),
+              let navigationViewModel: NavigationViewModel = resolve(NavigationViewModel.self) else {
+            print("Failed to resolve dependencies for view models")
+            return
         }
-        
+
+        registerSingleton(
+            HomeViewModel.self,
+            instance: HomeViewModel()
+        )
+        registerSingleton(
+            MovieListViewModel.self,
+            instance: MovieListViewModel(
+                movieRepository: movieRepository,
+                navigationViewModel: navigationViewModel
+            )
+        )
+        registerSingleton(
+            MovieDetailsViewModel.self,
+            instance: MovieDetailsViewModel(
+                movieRepository: movieRepository
+            )
+        )
+        registerSingleton(
+            MovieSearchViewModel.self,
+            instance: MovieSearchViewModel(
+                movieRepository: movieRepository
+            )
+        )
     }
     
+    private func registerSingleton<T>(_ type: T.Type, instance: T) {
+        do {
+            try DiContainer.shared.registerSingleton(type: type, instance: instance)
+        } catch {
+            print("Failed to register singleton \(type): \(error)")
+        }
+    }
+    
+    private func registerInstance<T>(_ type: T.Type, factory: @escaping () -> T) {
+        do {
+            try DiContainer.shared.register(type: type, instance: factory())
+        } catch {
+            print("Failed to register instance \(type): \(error)")
+        }
+    }
+    
+    private func resolve<T>(_ type: T.Type) -> T? {
+        do {
+            return try DiContainer.shared.resolve(type: type)
+        } catch {
+            print("Failed to resolve \(type): \(error)")
+            return nil
+        }
+    }
 }
