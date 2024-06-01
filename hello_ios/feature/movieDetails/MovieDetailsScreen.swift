@@ -15,6 +15,7 @@ struct MovieDetailsScreen: View {
     
     init(movieId: Int) {
         self.movieId = movieId
+        viewmodel.getMovieDetails(movieId: movieId)
     }
     
     var body: some View {
@@ -79,9 +80,6 @@ struct MovieDetailsScreen: View {
             .navigationBarTitle(Text(movie.title), displayMode: .inline)
         } else {
             ProgressView()
-                .onAppear {
-                    viewmodel.getMovieDetails(movieId: movieId)
-                }
         }
     }
     

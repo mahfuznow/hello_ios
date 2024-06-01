@@ -26,8 +26,13 @@ struct MovieListScreen: View {
                             ProgressView()
                                 .padding()
                         } else {
-                            MovieSlider(movieList: Array(viewModel.movieList.prefix(10)))
-                                .padding(.bottom)
+                            MovieSlider(
+                                movieList: Array(viewModel.movieList.prefix(10)),
+                                onClickedMovieItem: {
+                                    viewModel.onClickedMovieItem(movieId: $0.id)
+                                }
+                            )
+                            .padding(.bottom)
                             MovieCategoryView(title: "Newly Released", movies: viewModel.movieList, onMovieClick: viewModel.onClickedMovieItem)
                             MovieCategoryView(title: "Most Popular Movies", movies: viewModel.movieList, onMovieClick: viewModel.onClickedMovieItem)
                         }

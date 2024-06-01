@@ -12,6 +12,7 @@ struct MovieSlider: View {
     @State private var selectedTab = 0
     
     let movieList: [MovieListItemModel]
+    let onClickedMovieItem: (MovieListItemModel) -> Void
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
@@ -23,6 +24,9 @@ struct MovieSlider: View {
         }
         .frame(height: 250)
         .cornerRadius(20)
+        .onTapGesture {
+            onClickedMovieItem(movieList[selectedTab])
+        }
     }
     
     private var movieTabView: some View {
@@ -116,6 +120,7 @@ struct MovieSlider: View {
                 rating: 4,
                 releaseYear: 2024
             )
-        ]
+        ],
+        onClickedMovieItem: {_ in}
     )
 }
