@@ -103,6 +103,7 @@ struct MovieListResponse: Codable {
             }
             
             enum Quality: String, Codable {
+                case the2160P = "2160p"
                 case the1080P = "1080p"
                 case the720P = "720p"
                 case the480P = "480p"

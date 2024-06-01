@@ -10,16 +10,18 @@ import Foundation
 class Debouncer {
     static let shared = Debouncer(delay: 0.5)
     
+    private var timer: Timer?
+    
     private var delay: TimeInterval
-    private var workItem: DispatchWorkItem?
-
+    
     init(delay: TimeInterval) {
         self.delay = delay
     }
-
+    
     func debounce(action: @escaping () -> Void) {
-        workItem?.cancel()
-        workItem = DispatchWorkItem(block: action)
-        DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: workItem!)
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: delay, repeats: false) { _ in
+            action()
+        }
     }
 }

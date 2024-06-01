@@ -24,7 +24,7 @@ class MovieSearchViewModel {
     var searchQuery: String = "" {
         didSet {
             print("Search query changed: \(searchQuery)")
-            fetchMovieListUsingQuery()
+            debouncedSearch()
         }
     }
     
