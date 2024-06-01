@@ -199,6 +199,19 @@
 			path = util;
 			sourceTree = "<group>";
 		};
+		BBE52C612C0B7F04003D8029 /* presentation */ = {
+			isa = PBXGroup;
+			children = (
+				BBE52C512C0A555C003D8029 /* movieSearch */,
+				BBB0B8202BFE9AD8001216D0 /* movieDetails */,
+				BBB0B7FE2BFE59C6001216D0 /* movieList */,
+				BBFC9DB92BF9FAC9005C1BFF /* login */,
+				BBFC9DB42BF9E4F9005C1BFF /* home */,
+				BBFC9DA32BF9DE46005C1BFF /* MainApp.swift */,
+			);
+			path = presentation;
+			sourceTree = "<group>";
+		};
 		BBFC9D972BF9DE46005C1BFF = {
 			isa = PBXGroup;
 			children = (
@@ -218,13 +231,12 @@
 		BBFC9DA22BF9DE46005C1BFF /* hello_ios */ = {
 			isa = PBXGroup;
 			children = (
+				BBFC9DA72BF9DE47005C1BFF /* Assets.xcassets */,
 				BBE52C562C0A5ADB003D8029 /* core */,
+				BBB0B8022BFE5DBF001216D0 /* data */,
 				BBB0B8292C03CF09001216D0 /* di */,
 				BBB0B80E2BFE6A33001216D0 /* domain */,
-				BBB0B8022BFE5DBF001216D0 /* data */,
-				BBFC9DB12BF9DFF8005C1BFF /* feature */,
-				BBFC9DA32BF9DE46005C1BFF /* MainApp.swift */,
-				BBFC9DA72BF9DE47005C1BFF /* Assets.xcassets */,
+				BBE52C612C0B7F04003D8029 /* presentation */,
 				BBFC9DA92BF9DE47005C1BFF /* Preview Content */,
 			);
 			path = hello_ios;
@@ -236,18 +248,6 @@
 				BBFC9DAA2BF9DE47005C1BFF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		BBFC9DB12BF9DFF8005C1BFF /* feature */ = {
-			isa = PBXGroup;
-			children = (
-				BBE52C512C0A555C003D8029 /* movieSearch */,
-				BBB0B8202BFE9AD8001216D0 /* movieDetails */,
-				BBB0B7FE2BFE59C6001216D0 /* movieList */,
-				BBFC9DB92BF9FAC9005C1BFF /* login */,
-				BBFC9DB42BF9E4F9005C1BFF /* home */,
-			);
-			path = feature;
 			sourceTree = "<group>";
 		};
 		BBFC9DB42BF9E4F9005C1BFF /* home */ = {
