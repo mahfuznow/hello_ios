@@ -21,7 +21,7 @@ struct MovieListScreen : View {
                             ProgressView()
                         }
                         else {
-                            MovieSlider(movieList: Array(viewModel.movieList[1...3]))
+                            MovieSlider(movieList: Array(viewModel.movieList[1...10]))
                             _newlyReleased()
                             _mostPopularMovies()
                         }
