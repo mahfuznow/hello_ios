@@ -45,7 +45,7 @@ struct MovieListScreen: View {
     }
 }
 
-struct MovieCategoryView: View {
+fileprivate struct MovieCategoryView: View {
     let title: String
     let movies: [MovieListItemModel]
     let onMovieClick: (Int) -> Void
@@ -68,7 +68,7 @@ struct MovieCategoryView: View {
     }
 }
 
-struct MovieCard: View {
+fileprivate struct MovieCard: View {
     var movie: MovieListItemModel
     var onCardClicked: () -> Void
     
