@@ -9,7 +9,10 @@ import SwiftUI
 import Combine
 
 @Observable
-class NavigationViewModel: ObservableObject {
+class NavigationViewModel {
+    
+    static let shared = NavigationViewModel()
+    
     var navigationPath = NavigationPath()
     
     func navigateTo(screen: Route) {

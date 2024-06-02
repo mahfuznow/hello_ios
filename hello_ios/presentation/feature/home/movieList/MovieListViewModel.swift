@@ -14,7 +14,10 @@ class MovieListViewModel {
     private var movieRepository: MovieRepository
     private var navigationViewModel: NavigationViewModel
     
-    init(movieRepository: MovieRepository, navigationViewModel: NavigationViewModel) {
+    init(
+        movieRepository: MovieRepository,
+        navigationViewModel: NavigationViewModel
+    ) {
         self.movieRepository = movieRepository
         self.navigationViewModel = navigationViewModel
         fetchMovieList()

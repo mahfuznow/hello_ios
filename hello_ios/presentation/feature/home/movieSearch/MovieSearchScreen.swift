@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct MovieSearchScreen: View {
-    @State private var viewModel = try! DiContainer.shared.resolve(type: MovieSearchViewModel.self)
+    
+    @State private var viewModel = MovieSearchViewModel(
+        movieRepository: try! DiContainer.shared.resolve(type: MovieRepository.self)
+    )
     
     var body: some View {
         NavigationView {

@@ -11,10 +11,7 @@ import Foundation
 class MovieSearchViewModel {
     
     var movieList: [MovieListItemModel] = []
-    var isMovieDetailsPresented: Bool = false
-    var selectedMovieId: Int = 0
     
-
     private var movieRepository: MovieRepository
     
     init(movieRepository: MovieRepository) {

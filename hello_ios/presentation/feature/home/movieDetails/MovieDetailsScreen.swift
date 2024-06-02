@@ -12,7 +12,9 @@ import SwiftUI
 struct MovieDetailsScreen: View {
     let movieId: Int
     
-    @State private var viewmodel: MovieDetailsViewModel = try! DiContainer.shared.resolve(type: MovieDetailsViewModel.self)
+    @State private var viewmodel: MovieDetailsViewModel = MovieDetailsViewModel(
+        movieRepository: try! DiContainer.shared.resolve(type:MovieRepository.self)
+    )
     
     init(movieId: Int) {
         self.movieId = movieId
@@ -37,9 +39,6 @@ struct MovieDetailsScreen: View {
             }
         }.onAppear() {
             viewmodel.getMovieDetails(movieId: movieId)
-        }
-        .onDisappear() {
-            viewmodel.clearMovieDetails()
         }
     }
 }

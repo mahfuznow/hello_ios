@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AppRouter: View {
-    @State var navigationViewModel: NavigationViewModel = try! DiContainer.shared.resolve(type: NavigationViewModel.self)
+    @State var navigationViewModel: NavigationViewModel = NavigationViewModel.shared
     
     var body: some View {
         NavigationStack(path: $navigationViewModel.navigationPath) {

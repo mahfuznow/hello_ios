@@ -11,7 +11,7 @@ import Foundation
 class MovieDetailsViewModel {
     var movieDetails: MovieDetailsModel? = nil
     
-    var movieRepository: MovieRepository
+    private var movieRepository: MovieRepository
     
     init(movieRepository: MovieRepository) {
         self.movieRepository = movieRepository
@@ -26,9 +26,5 @@ class MovieDetailsViewModel {
                 print("Error: \(error)")
             }
         }
-    }
-    
-    func clearMovieDetails() {
-        movieDetails = nil
     }
 }

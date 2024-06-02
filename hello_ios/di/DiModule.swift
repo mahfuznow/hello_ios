@@ -14,49 +14,11 @@ class DiModule {
     private init() {}
     
     func injectDependencies() {
-        injectNavigation()
         injectRepositories()
-        injectViewModels()
-    }
-    
-    private func injectNavigation() {
-        registerSingleton(NavigationViewModel.self, instance: NavigationViewModel())
     }
     
     private func injectRepositories() {
         registerSingleton(MovieRepository.self, instance: MovieRepositoryImpl())
-    }
-    
-    private func injectViewModels() {
-        guard let movieRepository: MovieRepository = resolve(MovieRepository.self),
-              let navigationViewModel: NavigationViewModel = resolve(NavigationViewModel.self) else {
-            print("Failed to resolve dependencies for view models")
-            return
-        }
-
-        registerSingleton(
-            HomeViewModel.self,
-            instance: HomeViewModel()
-        )
-        registerSingleton(
-            MovieListViewModel.self,
-            instance: MovieListViewModel(
-                movieRepository: movieRepository,
-                navigationViewModel: navigationViewModel
-            )
-        )
-        registerSingleton(
-            MovieDetailsViewModel.self,
-            instance: MovieDetailsViewModel(
-                movieRepository: movieRepository
-            )
-        )
-        registerSingleton(
-            MovieSearchViewModel.self,
-            instance: MovieSearchViewModel(
-                movieRepository: movieRepository
-            )
-        )
     }
     
     private func registerSingleton<T>(_ type: T.Type, instance: T) {
@@ -67,9 +29,9 @@ class DiModule {
         }
     }
     
-    private func registerInstance<T>(_ type: T.Type, factory: @escaping () -> T) {
+    private func registerInstance<T>(_ type: T.Type, instance: T) {
         do {
-            try DiContainer.shared.register(type: type, instance: factory())
+            try DiContainer.shared.register(type: type, instance: instance)
         } catch {
             print("Failed to register instance \(type): \(error)")
         }

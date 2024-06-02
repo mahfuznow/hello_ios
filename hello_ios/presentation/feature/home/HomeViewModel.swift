@@ -9,5 +9,10 @@ import Foundation
 
 @Observable
 class HomeViewModel {
+    static let shared = HomeViewModel()
+    
+    private init() {
+        
+    }
     
 }
