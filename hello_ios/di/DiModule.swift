@@ -13,9 +13,11 @@ class DiModule {
     
     private init() {}
     
+    @MainActor
     func injectDependencies() {
         injectApiClient()
         injectApiService()
+        injectLocalService()
         injectRepositories()
     }
     
@@ -27,8 +29,19 @@ class DiModule {
         registerSingleton(ApiService.self, instance: ApiServiceImpl(apiClient: resolve(ApiClient.self)!))
     }
     
+    @MainActor
+    private func injectLocalService() {
+        registerSingleton(LocalService.self, instance: LocalServiceImpl())
+    }
+    
     private func injectRepositories() {
-        registerSingleton(MovieRepository.self, instance: MovieRepositoryImpl(apiService: resolve(ApiService.self)!))
+        registerSingleton(
+            MovieRepository.self,
+            instance: MovieRepositoryImpl(
+                apiService: resolve(ApiService.self)!,
+                localService: resolve(LocalService.self)!
+            )
+        )
     }
     
     private func registerSingleton<T>(_ type: T.Type, instance: T) {

@@ -1,8 +1,8 @@
 import SwiftUI
 
-struct MovieSearchScreen: View {
+struct FavouriteMoviesScreen: View {
     
-    @State private var viewModel = MovieSearchViewModel(
+    @State private var viewModel = FavouriteMoviesViewModel(
         movieRepository: try! DiContainer.shared.resolve(type: MovieRepository.self),
         navigationViewModel: NavigationViewModel.shared
     )
@@ -12,31 +12,28 @@ struct MovieSearchScreen: View {
             VStack {
                 List {
                     ForEach(viewModel.movieList) { movie in
-                        SearchMovieListItemView(
+                        FavouriteMovieListItemView(
                             movie: movie,
                             onClicked: {
                                 viewModel.onClickedMovieItem(movieId: movie.id)
-                            },
-                            onAddToFavourite: {
-                                viewModel.addToFavourite(movie: movie)
                             }
                         )
                     }
+                    .onDelete(perform: { indexSet in
+                        viewModel.onDeleteMovieItem(indexSet: indexSet)
+                    })
                 }
             }
-            .navigationTitle("Search")
-            .searchable(text: $viewModel.searchQuery)
-            .onSubmit(of: .search) {
-                viewModel.onSearchSubmit()
-            }
+            .navigationTitle("Favourite")
+        }.onAppear {
+            viewModel.fetchMovieList()
         }
     }
 }
 
-fileprivate struct SearchMovieListItemView: View {
+fileprivate struct FavouriteMovieListItemView: View {
     let movie: MovieListItemModel
     let onClicked: () -> Void
-    let onAddToFavourite: () -> Void
     
     var body: some View {
         HStack {
@@ -65,36 +62,23 @@ fileprivate struct SearchMovieListItemView: View {
                             .scaledToFit()
                     }
                 }
-            }.onTapGesture {
-                onClicked()
             }
             
             VStack(alignment: .leading) {
-                VStack(alignment: .leading) {
-                    Text(movie.title)
-                        .font(.headline)
-                        .fontWeight(.bold)
-                    Text("\(movie.releaseYear)")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                }.onTapGesture {
-                    onClicked()
-                }
-                
-                Button(action: onAddToFavourite) {
-                    HStack {
-                        Image(systemName: "heart")
-                        Text("Add to Favourite")
-                    }
+                Text(movie.title)
+                    .font(.headline)
+                    .fontWeight(.bold)
+                Text("\(movie.releaseYear)")
                     .font(.subheadline)
-                    .foregroundColor(.blue)
-                    .padding(.top, 5)
-                }
+                    .foregroundColor(.gray)
             }
+        }
+        .onTapGesture {
+            onClicked()
         }
     }
 }
 
 #Preview {
-    MovieSearchScreen()
+    FavouriteMoviesScreen()
 }

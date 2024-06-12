@@ -55,4 +55,14 @@ class MovieSearchViewModel {
         navigationViewModel.navigateTo(screen: .movieDetails(id: movieId))
     }
     
+    func addToFavourite(movie: MovieListItemModel) {
+        Task {
+            do {
+                try await movieRepository.addFavoriteMovie(movie: movie)
+                print("Added to favourite: \(movie)")
+            } catch {
+                print("addToFavourite Error: \(error)")
+            }
+        }
+    }
 }

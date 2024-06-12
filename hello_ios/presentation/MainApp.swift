@@ -6,11 +6,18 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct MainApp: App {
+    let modelContainer: ModelContainer
     
     init() {
+        do {
+            modelContainer = try ModelContainer(for: FavouriteMovieDbModel.self)
+        } catch {
+            fatalError("Failed to create ModelContainer for FavouriteMovieDbModel.")
+        }
         DiModule.shared.injectDependencies()
     }
     
@@ -18,5 +25,6 @@ struct MainApp: App {
         WindowGroup {
             AppRouter()
         }
+        .modelContainer(modelContainer)
     }
 }

@@ -20,9 +20,9 @@ struct HomeScreen: View {
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }
-            Text("Watchlist")
+            FavouriteMoviesScreen()
                 .tabItem {
-                    Label("Watchlist", systemImage: "bookmark")
+                    Label("Favourites", systemImage: "heart")
                 }
             Text("Settings")
                 .tabItem {

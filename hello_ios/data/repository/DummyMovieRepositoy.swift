@@ -48,4 +48,18 @@ class DummyMovieRepositoy: MovieRepository {
             genres: [.action, .comedy]
         )
     }
+    
+    var favouriteMovies: [FavouriteMovieDbModel] = []
+    
+    func getFavoriteMovies() async throws -> [MovieListItemModel] {
+        return favouriteMovies.map{MovieListItemModel.fromFavouriteMovie(favouriteMovie: $0)}
+    }
+    
+    func addFavoriteMovie(movie: MovieListItemModel) async throws {
+        favouriteMovies.append(movie.toFavouriteMovie())
+    }
+    
+    func removeFavoriteMovie(movie: MovieListItemModel) async throws {
+        favouriteMovies.removeAll(where: {$0.id == movie.id})
+    }
 }

@@ -11,6 +11,7 @@ enum Route: Hashable {
     case login
     case movieList
     case movieDetails(id: Int)  // Example of passing an argument
+    case favouriteMovies
     
     @ViewBuilder
     func view() -> some View {
@@ -21,6 +22,8 @@ enum Route: Hashable {
             MovieListScreen()
         case .movieDetails(let id):
             MovieDetailsScreen(movieId: id)
+        case .favouriteMovies:
+            FavouriteMoviesScreen()
         }
     }
 }
