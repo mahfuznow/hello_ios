@@ -19,40 +19,34 @@ class ApiServiceImpl : ApiService {
         }
     }
     
-    func getMovieList() async throws -> [MovieListItemModel] {
+    func getMovieList() async throws -> BaseResponse<MovieListResponse> {
         let url = baseURL.appendingPathComponent("/list_movies.json")
         let response: BaseResponse<MovieListResponse> = try await apiClient.get(url: url)
-        return response.data.movies.map{ movie in
-            MovieListItemModel.fromMovie(movie: movie)
-        }
+        return response
     }
     
-    func getMovieListByQuery(query: String) async throws -> [MovieListItemModel] {
+    func getMovieListByQuery(query: String) async throws -> BaseResponse<MovieListResponse> {
         var components = URLComponents(url: baseURL.appendingPathComponent("/list_movies.json"), resolvingAgainstBaseURL: false)!
         components.queryItems = [URLQueryItem(name: "query_term", value: query)]
         let url = components.url!
         let response: BaseResponse<MovieListResponse> = try await apiClient.get(url: url)
-        return response.data.movies.map{ movie in
-            MovieListItemModel.fromMovie(movie: movie)
-        }
+        return response
     }
     
-    func getMovieListByGenre(genre: MovieGenre) async throws -> [MovieListItemModel] {
+    func getMovieListByGenre(genre: MovieGenre) async throws -> BaseResponse<MovieListResponse> {
         var components = URLComponents(url: baseURL.appendingPathComponent("/list_movies.json"), resolvingAgainstBaseURL: false)!
         components.queryItems = [URLQueryItem(name: "genre", value: genre.toString())]
         let url = components.url!
         let response: BaseResponse<MovieListResponse> = try await apiClient.get(url: url)
-        return response.data.movies.map{ movie in
-            MovieListItemModel.fromMovie(movie: movie)
-        }
+        return response
     }
     
-    func getMovieDetails(movieId: Int) async throws -> MovieDetailsModel {
+    func getMovieDetails(movieId: Int) async throws -> BaseResponse<MovieDetailsResponse> {
         var components = URLComponents(url: baseURL.appendingPathComponent("/movie_details.json"), resolvingAgainstBaseURL: false)!
         components.queryItems = [URLQueryItem(name: "movie_id", value: "\(movieId)")]
         let url = components.url!
         let response: BaseResponse<MovieDetailsResponse> = try await apiClient.get(url: url)
-        return MovieDetailsModel.fromMovie(movie: response.data.movie)
+        return response
     }
 }
 

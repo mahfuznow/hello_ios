@@ -24,14 +24,4 @@ class FavouriteMovieDbModel {
         self.rating = rating
         self.releaseYear = releaseYear
     }
-    
-    static func fromMovieListMovie(movie: MovieListItemModel) -> FavouriteMovieDbModel {
-        return FavouriteMovieDbModel(
-            id: movie.id,
-            title: movie.title,
-            poster: movie.poster,
-            rating: movie.rating,
-            releaseYear: movie.releaseYear
-        )
-    }
 }
