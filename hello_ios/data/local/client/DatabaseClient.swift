@@ -8,7 +8,7 @@
 import Foundation
 import SwiftData
 
-class LocalClient<T> where T: SwiftData.PersistentModel{
+class DatabaseClient<T> where T: SwiftData.PersistentModel{
     private let modelContainer: ModelContainer
     private let modelContext: ModelContext
     

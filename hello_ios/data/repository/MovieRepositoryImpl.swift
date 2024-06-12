@@ -10,11 +10,11 @@ import Foundation
 class MovieRepositoryImpl: MovieRepository {
     
     private let apiService: ApiService
-    private let localService: LocalService
+    private let databaseService: DatabaseService
     
-    init(apiService: ApiService, localService: LocalService) {
+    init(apiService: ApiService, databaseService: DatabaseService) {
         self.apiService = apiService
-        self.localService = localService
+        self.databaseService = databaseService
     }
     
     func getMovieList() async throws -> [MovieListItemModel] {
@@ -44,16 +44,16 @@ class MovieRepositoryImpl: MovieRepository {
     }
     
     func getFavoriteMovies() async throws -> [MovieListItemModel] {
-        let favouriteMovieList: [FavouriteMovieDbModel] = try await localService.getFavouriteMovieList()
+        let favouriteMovieList: [FavouriteMovieDbModel] = try await databaseService.getFavouriteMovieList()
         return favouriteMovieList.map{MovieListItemModel.fromFavouriteMovie(favouriteMovie: $0)}
     }
     
     func addFavoriteMovie(movie: MovieListItemModel) async throws -> Void {
-        try await localService.addFavouriteMovie(movie: movie.toFavouriteMovie())
+        try await databaseService.addFavouriteMovie(movie: movie.toFavouriteMovie())
     }
     
     func removeFavoriteMovie(movie: MovieListItemModel) async throws -> Void {
-        try await localService.removeFavouriteMovie(movieId: movie.id)
+        try await databaseService.removeFavouriteMovie(movieId: movie.id)
     }
     
 }

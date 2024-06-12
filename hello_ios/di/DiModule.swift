@@ -31,7 +31,7 @@ class DiModule {
     
     @MainActor
     private func injectLocalService() {
-        registerSingleton(LocalService.self, instance: LocalServiceImpl())
+        registerSingleton(DatabaseService.self, instance: DatabaseServiceImpl())
     }
     
     private func injectRepositories() {
@@ -39,7 +39,7 @@ class DiModule {
             MovieRepository.self,
             instance: MovieRepositoryImpl(
                 apiService: resolve(ApiService.self)!,
-                localService: resolve(LocalService.self)!
+                databaseService: resolve(DatabaseService.self)!
             )
         )
     }

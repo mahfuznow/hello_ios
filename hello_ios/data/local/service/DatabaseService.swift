@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol LocalService {
+protocol DatabaseService {
     func getFavouriteMovieList() async throws -> [FavouriteMovieDbModel]
     func addFavouriteMovie(movie: FavouriteMovieDbModel) async throws
     func removeFavouriteMovie(movieId: Int) async throws

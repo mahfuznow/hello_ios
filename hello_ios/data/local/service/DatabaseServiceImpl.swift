@@ -7,12 +7,12 @@
 
 import Foundation
 
-class LocalServiceImpl: LocalService {
+class DatabaseServiceImpl: DatabaseService {
     
-    var favouriteMoviesLocalClient: FavouriteMoviesLocalClient
+    var favouriteMoviesLocalClient: FavouriteMoviesDatabaseClient
     
     @MainActor
-    init(favouriteMoviesLocalClient: FavouriteMoviesLocalClient = FavouriteMoviesLocalClient.shared) {
+    init(favouriteMoviesLocalClient: FavouriteMoviesDatabaseClient = FavouriteMoviesDatabaseClient.shared) {
         self.favouriteMoviesLocalClient = favouriteMoviesLocalClient
     }
     
