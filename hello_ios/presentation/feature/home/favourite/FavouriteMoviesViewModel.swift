@@ -45,11 +45,10 @@ class FavouriteMoviesViewModel {
         Task {
             do {
                 for index in indexSet {
-                    try await movieRepository.removeFavoriteMovie(movie: movieList[index])
+                    try await movieRepository.removeFavoriteMovie(movie:movieList[index])
                     print("Removed Favourite Movie with id: \(movieList[index].id)")
                 }
-                movieList.remove(atOffsets: indexSet)
-               
+                fetchMovieList()
             } catch {
                 print("Favourite movie removal Error: \(error)")
             }

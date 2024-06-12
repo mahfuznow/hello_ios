@@ -53,7 +53,7 @@ class MovieRepositoryImpl: MovieRepository {
     }
     
     func removeFavoriteMovie(movie: MovieListItemModel) async throws -> Void {
-        try await localService.removeFavouriteMovie(movie: movie.toFavouriteMovie())
+        try await localService.removeFavouriteMovie(movieId: movie.id)
     }
     
 }

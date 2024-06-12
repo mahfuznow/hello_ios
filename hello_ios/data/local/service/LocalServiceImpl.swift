@@ -21,11 +21,19 @@ class LocalServiceImpl: LocalService {
     }
     
     func addFavouriteMovie(movie: FavouriteMovieDbModel) async throws {
+        let movies = try await getFavouriteMovieList()
+        if(movies.contains{ $0.id == movie.id }) {
+            print("Movie already exists in favourite list")
+            return
+        }
         favouriteMoviesLocalClient.appendItem(item: movie)
     }
     
-    func removeFavouriteMovie(movie: FavouriteMovieDbModel) async throws {
-        favouriteMoviesLocalClient.removeItem(movie)
+    func removeFavouriteMovie(movieId: Int) async throws {
+        let movies = try await getFavouriteMovieList()
+        movies.filter{ $0.id == movieId }.forEach{
+            favouriteMoviesLocalClient.removeItem($0)
+        }
     }
     
 }
