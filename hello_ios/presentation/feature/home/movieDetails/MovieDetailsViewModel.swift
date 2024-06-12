@@ -27,4 +27,26 @@ class MovieDetailsViewModel {
             }
         }
     }
+    
+    func onToggleFavourite () {
+        guard let movieDetails = movieDetails else {
+            return
+        }
+        Task {
+            do {
+                if movieDetails.isFavourite {
+                    try await movieRepository.removeFavoriteMovie(
+                        movie: movieDetails.toMovieListItem()
+                    )
+                } else {
+                    try await movieRepository.addFavoriteMovie(
+                        movie: movieDetails.toMovieListItem()
+                    )
+                }
+                getMovieDetails(movieId: movieDetails.id)
+            } catch {
+                print("Error: \(error)")
+            }
+        }
+    }
 }

@@ -39,6 +39,7 @@ class DummyMovieRepositoy: MovieRepository {
     
     func getMovieDetails(movieId: Int) -> MovieDetailsModel {
         return MovieDetailsModel(
+            id: 0,
             title: "Movie 1",
             description: "This is a movie",
             largeCoverImage: "largeCoverImage",

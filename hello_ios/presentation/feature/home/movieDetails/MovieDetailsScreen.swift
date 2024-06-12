@@ -29,6 +29,12 @@ struct MovieDetailsScreen: View {
                         MovieTitleAndYearView(title: movie.title, year: movie.releaseYear)
                         MovieRatingView(rating: movie.rating)
                         MovieGenresView(genres: movie.genres)
+                        ToggleFavouriteButton(
+                            isFavourite: movie.isFavourite,
+                            onToggleFavourite: {
+                                viewmodel.onToggleFavourite()
+                            }
+                        )
                         MovieDurationAndDescriptionView(duration: movie.duration, description: movie.description)
                     }
                     .padding()

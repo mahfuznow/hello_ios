@@ -8,6 +8,7 @@
 import Foundation
 
 struct MovieDetailsModel {
+    let id: Int
     let title: String
     let description: String
     let largeCoverImage: String
@@ -20,6 +21,7 @@ struct MovieDetailsModel {
     
     static func fromMovie(movie: MovieDetailsResponse.Movie, isFavourite: Bool = false) -> MovieDetailsModel {
         return MovieDetailsModel(
+            id: movie.id,
             title: movie.title,
             description: movie.descriptionFull,
             largeCoverImage: movie.largeCoverImage,
@@ -27,6 +29,17 @@ struct MovieDetailsModel {
             rating: movie.rating,
             duration: movie.runtime,
             genres: movie.genres.map({ MovieGenre.fromString($0) }),
+            isFavourite: isFavourite
+        )
+    }
+    
+    func toMovieListItem() -> MovieListItemModel {
+        return MovieListItemModel(
+            id: id,
+            title: title,
+            poster: largeCoverImage,
+            rating: rating,
+            releaseYear: releaseYear,
             isFavourite: isFavourite
         )
     }
