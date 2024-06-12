@@ -10,7 +10,8 @@ import SwiftUI
 struct MovieSearchScreen: View {
     
     @State private var viewModel = MovieSearchViewModel(
-        movieRepository: try! DiContainer.shared.resolve(type: MovieRepository.self)
+        movieRepository: try! DiContainer.shared.resolve(type: MovieRepository.self),
+        navigationViewModel: NavigationViewModel.shared
     )
     
     var body: some View {
@@ -18,10 +19,10 @@ struct MovieSearchScreen: View {
             VStack {
                 List {
                     ForEach(viewModel.movieList) { movie in
-                        NavigationLink(
-                            destination: MovieDetailsScreen(movieId: movie.id),
-                            label: {
-                                SearchMovieListItemView(movie: movie)
+                        SearchMovieListItemView(
+                            movie: movie,
+                            onClicked: {
+                                viewModel.onClickedMovieItem(movieId: movie.id)
                             }
                         )
                     }
@@ -38,6 +39,7 @@ struct MovieSearchScreen: View {
 
 fileprivate struct SearchMovieListItemView : View {
     let movie: MovieListItemModel
+    let onClicked: () -> Void
     
     var body: some View {
         HStack {
@@ -76,6 +78,8 @@ fileprivate struct SearchMovieListItemView : View {
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }
+        }.onTapGesture {
+            onClicked()
         }
     }
 }

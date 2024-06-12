@@ -13,9 +13,11 @@ class MovieSearchViewModel {
     var movieList: [MovieListItemModel] = []
     
     private var movieRepository: MovieRepository
+    private var navigationViewModel: NavigationViewModel
     
-    init(movieRepository: MovieRepository) {
+    init(movieRepository: MovieRepository, navigationViewModel: NavigationViewModel) {
         self.movieRepository = movieRepository
+        self.navigationViewModel = navigationViewModel
         fetchMovieListUsingQuery()
     }
     
@@ -46,6 +48,11 @@ class MovieSearchViewModel {
                 print("Error: \(error)")
             }
         }
+    }
+    
+    func onClickedMovieItem(movieId: Int) {
+        print("Movie clicked: \(movieId)")
+        navigationViewModel.navigateTo(screen: .movieDetails(id: movieId))
     }
     
 }
