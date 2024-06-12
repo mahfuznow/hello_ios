@@ -17,12 +17,14 @@ struct MovieSearchScreen: View {
                             onClicked: {
                                 viewModel.onClickedMovieItem(movieId: movie.id)
                             },
-                            onAddToFavourite: {
-                                viewModel.addToFavourite(movie: movie)
+                            onToggleFavourite: {
+                                viewModel.toggleFavourite(movie: movie)
                             }
                         )
                     }
                 }.refreshable {
+                    viewModel.onRefresh()
+                }.onAppear {
                     viewModel.onRefresh()
                 }
             }
@@ -38,7 +40,7 @@ struct MovieSearchScreen: View {
 fileprivate struct SearchMovieListItemView: View {
     let movie: MovieListItemModel
     let onClicked: () -> Void
-    let onAddToFavourite: () -> Void
+    let onToggleFavourite: () -> Void
     
     var body: some View {
         HStack {
@@ -83,13 +85,13 @@ fileprivate struct SearchMovieListItemView: View {
                     onClicked()
                 }
                 
-                Button(action: onAddToFavourite) {
+                Button(action: onToggleFavourite) {
                     HStack {
-                        Image(systemName: "heart")
-                        Text("Add to Favourite")
+                        Image(systemName: movie.isFavourite ? "heart.fill": "heart")
+                        Text(movie.isFavourite ? "Remove from Favourites" : "Add to Favourites")
                     }
                     .font(.subheadline)
-                    .foregroundColor(.blue)
+                    .foregroundColor(movie.isFavourite ? .red : .blue)
                     .padding(.top, 5)
                 }
             }

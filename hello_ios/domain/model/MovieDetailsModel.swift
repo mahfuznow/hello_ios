@@ -15,9 +15,10 @@ struct MovieDetailsModel {
     let rating: Double
     let duration: Int
     let genres: [MovieGenre]
+    var isFavourite: Bool = false
     
     
-    static func fromMovie(movie: MovieDetailsResponse.Movie) -> MovieDetailsModel {
+    static func fromMovie(movie: MovieDetailsResponse.Movie, isFavourite: Bool = false) -> MovieDetailsModel {
         return MovieDetailsModel(
             title: movie.title,
             description: movie.descriptionFull,
@@ -25,7 +26,8 @@ struct MovieDetailsModel {
             releaseYear: movie.year,
             rating: movie.rating,
             duration: movie.runtime,
-            genres: movie.genres.map({ MovieGenre.fromString($0) })
+            genres: movie.genres.map({ MovieGenre.fromString($0) }),
+            isFavourite: isFavourite
         )
     }
 }

@@ -59,13 +59,19 @@ class MovieSearchViewModel {
         navigationViewModel.navigateTo(screen: .movieDetails(id: movieId))
     }
     
-    func addToFavourite(movie: MovieListItemModel) {
+    func toggleFavourite(movie: MovieListItemModel) {
         Task {
             do {
-                try await movieRepository.addFavoriteMovie(movie: movie)
-                print("Added to favourite: \(movie)")
+                if(movie.isFavourite) {
+                    try await movieRepository.removeFavoriteMovie(movie: movie)
+                    print("Removed from favourite: \(movie)")
+                } else {
+                    try await movieRepository.addFavoriteMovie(movie: movie)
+                    print("Added to favourite: \(movie)")
+                }
+                fetchMovieListUsingQuery()
             } catch {
-                print("addToFavourite Error: \(error)")
+                print("Favourite toggle Error: \(error)")
             }
         }
     }

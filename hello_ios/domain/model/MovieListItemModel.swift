@@ -13,22 +13,32 @@ struct MovieListItemModel: Identifiable {
     var poster: String
     var rating: Double
     var releaseYear: Int
+    var isFavourite: Bool
     
-    init(id: Int, title: String, poster: String, rating: Double, releaseYear: Int) {
+    init(
+        id: Int,
+        title: String,
+        poster: String,
+        rating: Double,
+        releaseYear: Int,
+        isFavourite: Bool = false
+    ) {
         self.id = id
         self.title = title
         self.poster = poster
         self.rating = rating
         self.releaseYear = releaseYear
+        self.isFavourite = isFavourite
     }
     
-    static func fromMovie(movie: MovieListResponse.Movie) -> MovieListItemModel {
+    static func fromMovie(movie: MovieListResponse.Movie, isFavourite: Bool = false) -> MovieListItemModel {
         return MovieListItemModel(
             id: movie.id,
             title: movie.title,
             poster: movie.mediumCoverImage,
             rating: movie.rating,
-            releaseYear: movie.year
+            releaseYear: movie.year,
+            isFavourite: isFavourite
         )
     }
     
