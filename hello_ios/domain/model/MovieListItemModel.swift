@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MovieListItemModel: Identifiable {
+struct MovieListItemModel: Identifiable {
     var id: Int
     var title: String
     var poster: String
@@ -23,7 +23,13 @@ class MovieListItemModel: Identifiable {
     }
     
     static func fromMovie(movie: MovieListResponse.Movie) -> MovieListItemModel {
-        return MovieListItemModel(id: movie.id, title: movie.title, poster: movie.mediumCoverImage, rating: movie.rating, releaseYear: movie.year)
+        return MovieListItemModel(
+            id: movie.id,
+            title: movie.title,
+            poster: movie.mediumCoverImage,
+            rating: movie.rating,
+            releaseYear: movie.year
+        )
     }
     
 }

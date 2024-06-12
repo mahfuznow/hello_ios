@@ -14,11 +14,21 @@ class DiModule {
     private init() {}
     
     func injectDependencies() {
+        injectApiClient()
+        injectApiService()
         injectRepositories()
     }
     
+    private func injectApiClient() {
+        registerSingleton(ApiClient.self, instance: ApiClientImpl())
+    }
+    
+    private func injectApiService() {
+        registerSingleton(ApiService.self, instance: ApiServiceImpl(apiClient: resolve(ApiClient.self)!))
+    }
+    
     private func injectRepositories() {
-        registerSingleton(MovieRepository.self, instance: MovieRepositoryImpl())
+        registerSingleton(MovieRepository.self, instance: MovieRepositoryImpl(apiService: resolve(ApiService.self)!))
     }
     
     private func registerSingleton<T>(_ type: T.Type, instance: T) {

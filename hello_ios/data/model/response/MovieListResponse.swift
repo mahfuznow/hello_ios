@@ -34,11 +34,8 @@ struct MovieListResponse: Codable {
         let genres: [String]
         let summary, descriptionFull, synopsis, ytTrailerCode: String
         let language: String
-        let mpaRating: MpaRating
         let backgroundImage, backgroundImageOriginal, smallCoverImage, mediumCoverImage: String
         let largeCoverImage: String
-        let state: Stat
-        let torrents: [Torrent]
         let dateUploaded: String?
         let dateUploadedUnix: Int?
         
@@ -53,72 +50,13 @@ struct MovieListResponse: Codable {
             case synopsis
             case ytTrailerCode = "yt_trailer_code"
             case language
-            case mpaRating = "mpa_rating"
             case backgroundImage = "background_image"
             case backgroundImageOriginal = "background_image_original"
             case smallCoverImage = "small_cover_image"
             case mediumCoverImage = "medium_cover_image"
             case largeCoverImage = "large_cover_image"
-            case state, torrents
             case dateUploaded = "date_uploaded"
             case dateUploadedUnix = "date_uploaded_unix"
-        }
-        
-        enum MpaRating: String, Codable {
-            case empty = ""
-            case pg = "PG"
-            case r = "R"
-        }
-        
-        enum Stat: String, Codable {
-            case ok = "ok"
-        }
-        
-        
-        // MARK: - Torrent
-        struct Torrent: Codable {
-            let url: String
-            let hash: String
-            let quality: Quality
-            let type: TypeEnum
-            let isRepack: String
-            let videoCodec: VideoCodec
-            let bitDepth, audioChannels: String
-            let seeds, peers: Int
-            let size: String
-            let sizeBytes: Int
-            let dateUploaded: String
-            let dateUploadedUnix: Int
-            
-            enum CodingKeys: String, CodingKey {
-                case url, hash, quality, type
-                case isRepack = "is_repack"
-                case videoCodec = "video_codec"
-                case bitDepth = "bit_depth"
-                case audioChannels = "audio_channels"
-                case seeds, peers, size
-                case sizeBytes = "size_bytes"
-                case dateUploaded = "date_uploaded"
-                case dateUploadedUnix = "date_uploaded_unix"
-            }
-            
-            enum Quality: String, Codable {
-                case the2160P = "2160p"
-                case the1080P = "1080p"
-                case the720P = "720p"
-                case the480P = "480p"
-            }
-            
-            enum TypeEnum: String, Codable {
-                case bluray = "bluray"
-                case web = "web"
-            }
-            
-            enum VideoCodec: String, Codable {
-                case x264 = "x264"
-                case x265 = "x265"
-            }
-            
         }
     }
 }
