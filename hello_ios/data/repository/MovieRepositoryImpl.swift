@@ -44,7 +44,7 @@ class MovieRepositoryImpl: MovieRepository {
     }
     
     func getFavoriteMovies() async throws -> [MovieListItemModel] {
-        let favouriteMovieList: [FavouriteMovieDbModel] = try await databaseService.getFavouriteMovieList()
+        let favouriteMovieList: [FavouriteMovieDatabaseModel] = try await databaseService.getFavouriteMovieList()
         return favouriteMovieList.map{MovieListItemModel.fromFavouriteMovie(favouriteMovie: $0)}
     }
     

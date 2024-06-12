@@ -32,7 +32,7 @@ struct MovieListItemModel: Identifiable {
         )
     }
     
-    static func fromFavouriteMovie(favouriteMovie: FavouriteMovieDbModel) -> MovieListItemModel {
+    static func fromFavouriteMovie(favouriteMovie: FavouriteMovieDatabaseModel) -> MovieListItemModel {
         return MovieListItemModel(
             id: favouriteMovie.id,
             title: favouriteMovie.title,
@@ -42,8 +42,8 @@ struct MovieListItemModel: Identifiable {
         )
     }
     
-    func toFavouriteMovie() -> FavouriteMovieDbModel {
-        return FavouriteMovieDbModel(
+    func toFavouriteMovie() -> FavouriteMovieDatabaseModel {
+        return FavouriteMovieDatabaseModel(
             id: id,
             title: title,
             poster: poster,

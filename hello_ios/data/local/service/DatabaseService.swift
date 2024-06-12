@@ -8,7 +8,7 @@
 import Foundation
 
 protocol DatabaseService {
-    func getFavouriteMovieList() async throws -> [FavouriteMovieDbModel]
-    func addFavouriteMovie(movie: FavouriteMovieDbModel) async throws
+    func getFavouriteMovieList() async throws -> [FavouriteMovieDatabaseModel]
+    func addFavouriteMovie(movie: FavouriteMovieDatabaseModel) async throws
     func removeFavouriteMovie(movieId: Int) async throws
 }

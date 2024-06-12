@@ -16,11 +16,11 @@ class DatabaseServiceImpl: DatabaseService {
         self.favouriteMoviesLocalClient = favouriteMoviesLocalClient
     }
     
-    func getFavouriteMovieList() async throws -> [FavouriteMovieDbModel] {
+    func getFavouriteMovieList() async throws -> [FavouriteMovieDatabaseModel] {
         return favouriteMoviesLocalClient.fetchItems()
     }
     
-    func addFavouriteMovie(movie: FavouriteMovieDbModel) async throws {
+    func addFavouriteMovie(movie: FavouriteMovieDatabaseModel) async throws {
         let movies = try await getFavouriteMovieList()
         if(movies.contains{ $0.id == movie.id }) {
             print("Movie already exists in favourite list")

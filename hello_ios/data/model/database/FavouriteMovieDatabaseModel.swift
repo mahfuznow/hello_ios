@@ -10,7 +10,7 @@ import Foundation
 import SwiftData
 
 @Model
-class FavouriteMovieDbModel {
+class FavouriteMovieDatabaseModel {
     var id: Int
     var title: String
     var poster: String

@@ -49,7 +49,7 @@ class DummyMovieRepositoy: MovieRepository {
         )
     }
     
-    var favouriteMovies: [FavouriteMovieDbModel] = []
+    var favouriteMovies: [FavouriteMovieDatabaseModel] = []
     
     func getFavoriteMovies() async throws -> [MovieListItemModel] {
         return favouriteMovies.map{MovieListItemModel.fromFavouriteMovie(favouriteMovie: $0)}

@@ -14,7 +14,7 @@ struct MainApp: App {
     
     init() {
         do {
-            modelContainer = try ModelContainer(for: FavouriteMovieDbModel.self)
+            modelContainer = try ModelContainer(for: FavouriteMovieDatabaseModel.self)
         } catch {
             fatalError("Failed to create ModelContainer for FavouriteMovieDbModel.")
         }

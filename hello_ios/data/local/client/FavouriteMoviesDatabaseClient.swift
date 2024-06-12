@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FavouriteMoviesDatabaseClient: DatabaseClient<FavouriteMovieDbModel> {
+class FavouriteMoviesDatabaseClient: DatabaseClient<FavouriteMovieDatabaseModel> {
     @MainActor
     static let shared: FavouriteMoviesDatabaseClient = FavouriteMoviesDatabaseClient()
 }
