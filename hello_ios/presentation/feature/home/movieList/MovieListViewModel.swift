@@ -34,6 +34,10 @@ class MovieListViewModel {
         }
     }
     
+    func onRefresh() {
+        fetchMovieList()
+    }
+    
     func onClickedMovieItem(movieId: Int) {
         print("Movie clicked: \(movieId)")
         navigationViewModel.navigateTo(screen: .movieDetails(id: movieId))

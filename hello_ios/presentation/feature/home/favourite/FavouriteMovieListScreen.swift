@@ -23,10 +23,13 @@ struct FavouriteMoviesScreen: View {
                         viewModel.onDeleteMovieItem(indexSet: indexSet)
                     })
                 }
+                .refreshable {
+                    viewModel.onRefresh()
+                }.onAppear {
+                    viewModel.onRefresh()
+                }
             }
             .navigationTitle("Favourite")
-        }.onAppear {
-            viewModel.fetchMovieList()
         }
     }
 }

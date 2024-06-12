@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 @Observable
 class FavouriteMoviesViewModel {
     var movieList: [MovieListItemModel] = []
@@ -25,7 +23,7 @@ class FavouriteMoviesViewModel {
         fetchMovieList()
     }
     
-    func fetchMovieList() {
+    private func fetchMovieList() {
         Task {
             do {
                 movieList = try await movieRepository.getFavoriteMovies()
@@ -34,6 +32,10 @@ class FavouriteMoviesViewModel {
                 print("Error: \(error)")
             }
         }
+    }
+    
+    func onRefresh() {
+        fetchMovieList()
     }
     
     func onClickedMovieItem(movieId: Int) {

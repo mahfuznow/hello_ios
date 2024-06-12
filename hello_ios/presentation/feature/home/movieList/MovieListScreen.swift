@@ -34,6 +34,9 @@ struct MovieListScreen: View {
                 }
                 .padding(.horizontal)
             }
+            .refreshable {
+                viewModel.onRefresh()
+            }
             .navigationTitle("Movies")
         }
     }

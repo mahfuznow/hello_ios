@@ -22,6 +22,8 @@ struct MovieSearchScreen: View {
                             }
                         )
                     }
+                }.refreshable {
+                    viewModel.onRefresh()
                 }
             }
             .navigationTitle("Search")
