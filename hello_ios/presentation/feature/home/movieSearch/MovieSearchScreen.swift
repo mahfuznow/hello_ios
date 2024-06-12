@@ -21,23 +21,7 @@ struct MovieSearchScreen: View {
                         NavigationLink(
                             destination: MovieDetailsScreen(movieId: movie.id),
                             label: {
-                                HStack {
-                                    AsyncImage(url: URL(string: movie.poster)) { image in
-                                        image
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                    } placeholder: {
-                                        ProgressView()
-                                    }
-                                    VStack(alignment: .leading) {
-                                        Text(movie.title)
-                                            .font(.headline)
-                                            .fontWeight(.bold)
-                                        Text("\(movie.releaseYear)")
-                                            .font(.subheadline)
-                                            .foregroundColor(.gray)
-                                    }
-                                }
+                                SearchMovieListItemView(movie: movie)
                             }
                         )
                     }
@@ -47,6 +31,50 @@ struct MovieSearchScreen: View {
             .searchable(text: $viewModel.searchQuery)
             .onSubmit(of: .search) {
                 viewModel.onSearchSubmit()
+            }
+        }
+    }
+}
+
+fileprivate struct SearchMovieListItemView : View {
+    let movie: MovieListItemModel
+    
+    var body: some View {
+        HStack {
+            AsyncImage(url: URL(string: movie.poster)) { phase in
+                ZStack {
+                    if let image = phase.image {
+                        image
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 100)
+                    } else if phase.error != nil {
+                        // Error view (optional)
+                        Image(systemName: "photo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 100, height: 180)
+                            .foregroundColor(.gray)
+                    } else {
+                        // Placeholder with progress indicator
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.3))
+                            .frame(width: 100, height: 180)
+                            .overlay(
+                                ProgressView()
+                            )
+                            .scaledToFit()
+                    }
+                }
+            }
+            
+            VStack(alignment: .leading) {
+                Text(movie.title)
+                    .font(.headline)
+                    .fontWeight(.bold)
+                Text("\(movie.releaseYear)")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
             }
         }
     }

@@ -16,6 +16,7 @@ class MovieSearchViewModel {
     
     init(movieRepository: MovieRepository) {
         self.movieRepository = movieRepository
+        fetchMovieListUsingQuery()
     }
     
     var searchQuery: String = "" {
