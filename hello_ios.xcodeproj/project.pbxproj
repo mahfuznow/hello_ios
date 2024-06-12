@@ -101,7 +101,6 @@
 		BB8B17662C185F0E00022A97 /* client */ = {
 			isa = PBXGroup;
 			children = (
-				BBE52C6B2C0C8449003D8029 /* ApiClient.swift */,
 				BBE52C6D2C0C86E5003D8029 /* ApiClientImpl.swift */,
 				BBE52C6F2C0C8777003D8029 /* ApiClientError.swift */,
 			);
@@ -111,10 +110,34 @@
 		BB8B17672C185F1E00022A97 /* service */ = {
 			isa = PBXGroup;
 			children = (
-				BB8B17642C185EE900022A97 /* ApiService.swift */,
 				BB8B17682C185F3100022A97 /* ApiServiceImpl.swift */,
 			);
 			path = service;
+			sourceTree = "<group>";
+		};
+		BB8B176C2C19510F00022A97 /* remote */ = {
+			isa = PBXGroup;
+			children = (
+				BB8B176E2C19514100022A97 /* client */,
+				BB8B176D2C19512100022A97 /* service */,
+			);
+			path = remote;
+			sourceTree = "<group>";
+		};
+		BB8B176D2C19512100022A97 /* service */ = {
+			isa = PBXGroup;
+			children = (
+				BB8B17642C185EE900022A97 /* ApiService.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		BB8B176E2C19514100022A97 /* client */ = {
+			isa = PBXGroup;
+			children = (
+				BBE52C6B2C0C8449003D8029 /* ApiClient.swift */,
+			);
+			path = client;
 			sourceTree = "<group>";
 		};
 		BBB0B7FE2BFE59C6001216D0 /* movieList */ = {
@@ -167,6 +190,7 @@
 		BBB0B80E2BFE6A33001216D0 /* domain */ = {
 			isa = PBXGroup;
 			children = (
+				BB8B176C2C19510F00022A97 /* remote */,
 				BBB0B8172BFE6F84001216D0 /* repository */,
 				BBB0B80F2BFE6A3B001216D0 /* model */,
 			);
